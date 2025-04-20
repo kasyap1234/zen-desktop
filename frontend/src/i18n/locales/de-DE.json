@@ -104,6 +104,12 @@
       "advanced": "Erweitert",
       "app": "Anwendung"
     },
+    "theme": {
+      "chooseTheme": "Design auswählen",
+      "dark": "Dunkel",
+      "light": "Hell",
+      "system": "Systemdesign verwenden"
+    },
     "updates": {
       "automatic": "Automatische Updates",
       "choosePolicy": "Wählen Sie, wie Updates installiert werden",
