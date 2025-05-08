@@ -92,6 +92,16 @@ var migrations = map[string]func(c *Config) error{
 		if err := c.Save(); err != nil {
 			return fmt.Errorf("save config: %v", err)
 		}
+		errStr := c.AddFilterList(FilterList{
+			Name:    "Zen - Ads",
+			Type:    "regional",
+			URL:     "https://raw.githubusercontent.com/ZenPrivacy/filter-lists/master/ads/ads.txt",
+			Enabled: true,
+		})
+		if errStr != "" {
+			err := errors.New(errStr)
+			return err
+		}
 		return nil
 	},
 }
