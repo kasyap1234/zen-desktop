@@ -81,6 +81,11 @@ pypi.org
 crates.io
 rubygems.org
 
+# OpenAI from here: https://help.openai.com/en/articles/9247338-network-recommendations-for-chatgpt-errors-on-web-and-apps
+ios.chat.openai.com
+ab.chatgpt.com
+oaiusercontent.com
+
 # Issues
 # https://github.com/ZenPrivacy/zen-desktop/pull/223
 account.booking.com
