@@ -11,6 +11,7 @@ import { BrowserLink } from '../common/BrowserLink';
 import { useProxyState } from '../context/ProxyStateContext';
 
 import { AutostartSwitch } from './AutostartSwitch';
+import { ExportDebugDataButton } from './ExportDebugDataButton';
 import { ExportLogsButton } from './ExportLogsButton';
 import { IgnoredHostsInput } from './IgnoredHostsInput';
 import { LocaleSelector } from './LocaleSelector';
@@ -56,6 +57,7 @@ export function SettingsManager() {
           {state.showUpdateRadio && <UpdatePolicyRadioGroup />}
           <ThemeSelector />
           <ExportLogsButton />
+          <ExportDebugDataButton />
         </div>
       </div>
 
