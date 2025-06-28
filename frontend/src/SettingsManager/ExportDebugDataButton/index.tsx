@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 
 import { ExportDebugData } from '../../../wailsjs/go/cfg/Config';
 import { ClipboardSetText } from '../../../wailsjs/runtime';
-import './index.css';
 import { AppToaster } from '../../common/toaster';
 
 export function ExportDebugDataButton() {

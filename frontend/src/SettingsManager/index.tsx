@@ -56,8 +56,10 @@ export function SettingsManager() {
           <AutostartSwitch />
           {state.showUpdateRadio && <UpdatePolicyRadioGroup />}
           <ThemeSelector />
-          <ExportLogsButton />
-          <ExportDebugDataButton />
+          <div className="settings-manager__section--links">
+            <ExportLogsButton />
+            <ExportDebugDataButton />
+          </div>
         </div>
       </div>
 

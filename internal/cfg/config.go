@@ -111,6 +111,7 @@ func (c *Config) ExportDebugData() (string, error) {
 	}
 	return string(jsonData), nil
 }
+
 func (f *FilterList) UnmarshalJSON(data []byte) error {
 	type TempFilterList FilterList
 	var temp TempFilterList
