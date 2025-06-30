@@ -380,5 +380,11 @@ func (a *App) IsNoSelfUpdate() bool {
 func(a*App)OnSecondInstanceLaunch(secondInstanceData options.SecondInstanceData){
 	runtime.WindowUnmaximise(a.ctx)
 	runtime.Show(a.ctx)
+	for _, arg := range secondInstanceData.Args {
+		if arg == "--start" {
+			go a.StartProxy()
+			break
+		}
+	}
 	go runtime.EventsEmit(a.ctx,"launchArgs",secondInstanceData.Args)
 }
