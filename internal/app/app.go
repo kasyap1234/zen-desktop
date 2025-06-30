@@ -26,6 +26,7 @@ import (
 	"github.com/ZenPrivacy/zen-desktop/internal/selfupdate"
 	"github.com/ZenPrivacy/zen-desktop/internal/sysproxy"
 	"github.com/ZenPrivacy/zen-desktop/internal/systray"
+	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
@@ -67,6 +68,7 @@ func NewApp(name string, config *cfg.Config, startOnDomReady bool) (*App, error)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create filter list store: %v", err)
 	}
+	
 
 	systemProxyManager := sysproxy.NewManager(config.GetPACPort())
 
@@ -373,4 +375,10 @@ func (a *App) ImportCustomFilterLists() error {
 
 func (a *App) IsNoSelfUpdate() bool {
 	return selfupdate.NoSelfUpdate == "true"
+}
+
+func(a*App)OnSecondInstanceLaunch(secondInstanceData options.SecondInstanceData){
+	runtime.WindowUnmaximise(a.ctx)
+	runtime.Show(a.ctx)
+	go runtime.EventsEmit(a.ctx,"launchArgs",secondInstanceData.Args)
 }
