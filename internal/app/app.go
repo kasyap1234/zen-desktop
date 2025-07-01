@@ -68,7 +68,6 @@ func NewApp(name string, config *cfg.Config, startOnDomReady bool) (*App, error)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create filter list store: %v", err)
 	}
-	
 
 	systemProxyManager := sysproxy.NewManager(config.GetPACPort())
 
@@ -377,6 +376,7 @@ func (a *App) IsNoSelfUpdate() bool {
 	return selfupdate.NoSelfUpdate == "true"
 }
 
+<<<<<<< Updated upstream
 func(a*App)OnSecondInstanceLaunch(secondInstanceData options.SecondInstanceData){
 	runtime.WindowUnmaximise(a.ctx)
 	runtime.Show(a.ctx)
@@ -388,3 +388,28 @@ func(a*App)OnSecondInstanceLaunch(secondInstanceData options.SecondInstanceData)
 	}
 	go runtime.EventsEmit(a.ctx,"launchArgs",secondInstanceData.Args)
 }
+=======
+func (a *App) OnSecondInstanceLaunch(secondInstanceData options.SecondInstanceData) {
+	start, hidden := parseLaunchArgs(secondInstanceData.Args)
+	if !hidden {
+		runtime.WindowUnmaximise(a.ctx)
+		runtime.Show(a.ctx)
+	}
+	if start {
+		a.StartProxy()
+	}
+
+}
+
+func parseLaunchArgs(args []string) (start, hidden bool) {
+	for _, arg := range args[1:] {
+		if arg == "-start" {
+			start = true
+		}
+		if arg == "-hidden" {
+			hidden = true
+		}
+	}
+	return start, hidden
+}
+>>>>>>> Stashed changes
