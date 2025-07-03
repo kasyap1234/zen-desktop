@@ -376,19 +376,6 @@ func (a *App) IsNoSelfUpdate() bool {
 	return selfupdate.NoSelfUpdate == "true"
 }
 
-<<<<<<< Updated upstream
-func(a*App)OnSecondInstanceLaunch(secondInstanceData options.SecondInstanceData){
-	runtime.WindowUnmaximise(a.ctx)
-	runtime.Show(a.ctx)
-	for _, arg := range secondInstanceData.Args {
-		if arg == "--start" {
-			go a.StartProxy()
-			break
-		}
-	}
-	go runtime.EventsEmit(a.ctx,"launchArgs",secondInstanceData.Args)
-}
-=======
 func (a *App) OnSecondInstanceLaunch(secondInstanceData options.SecondInstanceData) {
 	start, hidden := parseLaunchArgs(secondInstanceData.Args)
 	if !hidden {
@@ -412,4 +399,3 @@ func parseLaunchArgs(args []string) (start, hidden bool) {
 	}
 	return start, hidden
 }
->>>>>>> Stashed changes
